@@ -1,8 +1,7 @@
 <template>
-  <nav
-    class="navbar navbar-light bg-white border-bottom sticky-top navbar-expand-lg py-0"
-  >
-    <div class="container-fluid">
+
+<nav class="navbar navbar-expand-lg navbar-light border-bottom sticky-top p-0">
+  <div class="container-fluid px-0">
       <button
         class="hamburger hamburger--spin"
         :class="show == true ? 'is-active' : ''"
@@ -13,66 +12,20 @@
           <span class="hamburger-inner"></span>
         </span>
       </button>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse flex-row-reverse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item" v-for="link in links" :key="link.url">
-            <router-link
-              :to="link.url"
-              class="nav-link"
-              active-class="bg-primary text-white"
-              :exact="link.exact"
-              >{{ link.title }}</router-link
-            >
-          </li>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDarkDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark dropdown-menu-right"
-                aria-labelledby="navbarDarkDropdownMenuLink"
-              >
-                <li class="text-center bg-white">
-                  <img
-                    src="https://www.iconninja.com/files/475/649/110/user-avatar-profile-account-person-icon.png"
-                    width="48"
-                    height="48"
-                    alt="avatar"
-                    title="avatar"
-                  />
-                </li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#">Logout</a></li>
-              </ul>
-            </li>
-          </ul>
-        </ul>
-      </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+
+        <li class="nav-item" v-for="link in links" :key="link.url">
+          <router-link :to="link.url" class="nav-link" active-class="active" :exact="link.exact">{{ link.title }}</router-link>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 </template>
 
 <script>
@@ -186,5 +139,10 @@ export default {
   transform: rotate(-90deg);
   transition: bottom 0.1s ease-out,
     transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.active {
+  color: #fff !important;
+  background-color: #354052;
 }
 </style> 

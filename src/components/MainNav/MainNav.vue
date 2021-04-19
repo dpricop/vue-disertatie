@@ -24,7 +24,7 @@ export default {
   methods: {
     toggleMainNavVertical() {
       this.show = !this.show;
-    },
+    }
   },
 };
 </script>

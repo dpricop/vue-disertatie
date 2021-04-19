@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav flex-column h-100 position-fixed">
+  <nav class="nav flex-column h-100 position-fixed border-0">
     <router-link v-for="link in links" :key="link.url" :to="link.url" class="nav-link text-wrap" active-class="active" :title="link.title">
       {{ link.title }}
     </router-link>
@@ -10,20 +10,20 @@
 export default {
   data: () => ({
     links: [
+      { title: "Home", url: "/" },
       { title: "Dashboard", url: "dashboard" },
-      { title: "Accounts", url: "accounts" },
-      { title: "Contacts", url: "contacts" },
-      { title: "My tasks", url: "tasks" },
+      { title: "Tasks", url: "tasks" },
       { title: "Opportunities", url: "opportunities" },
       { title: "Leads", url: "leads" },
       { title: "Reports", url: "reports" },
-      { title: "Home", url: "/" },
-      { title: "About", url: "/about" },
-      { title: "Project", url: "project" },
+      { title: "Partners", url: "partners" },
+      { title: "Contacts", url: "contacts" },
       { title: "Email campaigns", url: "campaingas" },
       { title: "Settings", url: "settings" }
     ]
   }),
+  methods: {
+  },
 };
 </script>
 
@@ -34,14 +34,16 @@ export default {
   overflow-x: hidden;
 }
 .nav-link, .nav {
-  background-color: #6f79a8;
+  background-color: #354052;
   color: #eee;
+  border-left:5px solid transparent;
 }
 .nav-link:hover {
-  background-color: rgba(111,169,193, 0.9);
+  background-color: rgba(71,186,193, 0.8);
 }
 .active {
   color: #fff;
-  background-color: #6fa9c1;
+  background-color: #2f3949;
+  border-left: 5px solid #47bac1;
 }
 </style>
