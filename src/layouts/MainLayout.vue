@@ -1,6 +1,6 @@
 <template>
   <MainNav :toggle="false" />
-  <div class="row g-0">
+  <div class="row mx-0 g-0">
     <router-view />
   </div>
 </template>
