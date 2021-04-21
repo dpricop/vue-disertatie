@@ -11,7 +11,7 @@ import MainLayout from '@/layouts/MainLayout'
 export default {
   computed: {
     layout() {
-      return this.$route.meta.layout
+      return (this.$route.meta.layout || 'main') + '-layout'
     },
   },
   components: {
@@ -22,4 +22,5 @@ export default {
 
 <style scoped>
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "assets/main.css";
 </style>
