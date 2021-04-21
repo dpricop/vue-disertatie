@@ -1,7 +1,8 @@
 <template>
-
-<nav class="navbar navbar-expand-lg navbar-light border-bottom sticky-top p-0">
-  <div class="container-fluid px-0">
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top p-0"
+  >
+    <div class="container-fluid px-0">
       <button
         class="hamburger hamburger--spin"
         :class="show == true ? 'is-active' : ''"
@@ -13,26 +14,42 @@
         </span>
       </button>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav mb-2 mb-lg-0">
-
-        <li class="nav-item" v-for="link in links" :key="link.url">
-          <router-link :to="link.url" class="nav-link" active-class="active" :exact="link.exact">{{ link.title }}</router-link>
-        </li>
-      </ul>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item" v-for="link in links" :key="link.url">
+            <router-link
+              :to="link.url"
+              class="nav-link"
+              active-class="active"
+              :exact="link.exact"
+              >{{ link.title }}</router-link
+            >
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 </template>
 
 <script>
 export default {
   name: "MainNavHorizontal",
   props: ["toggle"],
-  data: function () {
+  data: function() {
     return {
       links: [
         { title: "Home", url: "/", exact: true },
@@ -145,4 +162,4 @@ export default {
   color: #fff !important;
   background-color: #354052;
 }
-</style> 
+</style>
