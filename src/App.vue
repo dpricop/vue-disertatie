@@ -5,22 +5,24 @@
 </template>
 
 <script>
-import EmptyLayout from '@/layouts/EmptyLayout'
-import MainLayout from '@/layouts/MainLayout'
+import EmptyLayout from "@/layouts/EmptyLayout";
+import MainLayout from "@/layouts/MainLayout";
 
 export default {
   computed: {
     layout() {
-      return (this.$route.meta.layout || 'main') + '-layout'
+      return (this.$route.meta.layout || "main") + "-layout";
     },
   },
   components: {
-      EmptyLayout, MainLayout
-  }
+    EmptyLayout,
+    MainLayout,
+  },
 };
-</script> 
+</script>
 
 <style scoped>
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "assets/main.css";
+@import "~@coreui/icons/css/free.min.css";
 </style>

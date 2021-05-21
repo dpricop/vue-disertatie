@@ -1,0 +1,43 @@
+.table-toolbar .btn {
+  border-radius: 0px !important;
+}
+
+.table-toolbar button[class*="table-toolbar-btn"] {
+  border: 1px solid #dee2e6;
+  color: #232323;
+  display: inline-flex;
+  align-items: center;
+}
+
+.table-toolbar button[class*="table-toolbar-btn"] i {
+  font-size: 1rem;
+}
+.table-toolbar button[class*="table-toolbar-btn"] span {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.table-toolbar-btn-edit:hover {
+  border-color: #ffc107 !important;
+}
+.table-toolbar-btn-edit:hover i {
+  color: #ffc107;
+}
+.table-toolbar-btn-drop:hover {
+  border-color: #dc3545 !important;
+}
+.table-toolbar-btn-drop:hover i {
+  color: #dc3545;
+}
+.table-toolbar-btn-reload:hover {
+  border-color: #6c757d !important;
+}
+.table-toolbar-btn-reload:hover i {
+  color: #6c757d;
+}
+.table-toolbar-btn-add:hover {
+  border-color: #198754 !important;
+}
+.table-toolbar-btn-add:hover i {
+  color: #198754;
+}
