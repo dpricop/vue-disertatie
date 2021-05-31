@@ -9,7 +9,7 @@
   <template v-else>
     <div class="row">
       <div class="col-auto col-md-6">
-        <table class="table table-bordered bg-white">
+        <table class="table table-bordered bg-white mb-0">
           <thead>
             <tr>
               <th colspan="4">
@@ -80,14 +80,12 @@
           </tbody>
         </table>
       </div>
-      <div class="col-auto col-md-6 col-lg-4">
-        <config-motive-form
-          v-bind:propsData="editItemData"
-          :key="editItemData"
-          @editedItem="editedItem"
-        />
-      </div>
     </div>
+    <config-motive-form
+      v-bind:propsData="editItemData"
+      :key="editItemData"
+      @editedItem="editedItem"
+    />
   </template>
 </template>
 <script>
