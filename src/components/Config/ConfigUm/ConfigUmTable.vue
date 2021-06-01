@@ -9,7 +9,7 @@
   <template v-else>
     <div class="row">
       <div class="col-auto col-md-6 col-lg-4">
-        <table class="table table-bordered">
+        <table class="table table-bordered bg-white mb-0">
           <thead>
             <tr>
               <th colspan="2">
@@ -63,14 +63,12 @@
           </tbody>
         </table>
       </div>
-      <div class="col-auto col-md-6 col-lg-4">
-        <config-um-form
-          v-bind:propsData="editItemData"
-          :key="editItemData"
-          @editedItem="editedItem"
-        />
-      </div>
     </div>
+    <config-um-form
+      v-bind:propsData="editItemData"
+      :key="editItemData"
+      @editedItem="editedItem"
+    />
   </template>
 </template>
 <script>
