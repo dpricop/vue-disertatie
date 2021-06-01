@@ -1,0 +1,163 @@
+<template>
+  <template v-if="isLoading == true">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border spinner-default" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </template>
+  <template v-else>
+    <div class="row">
+      <div class="col-auto col-md-6 col-lg-4">
+        <table class="table table-bordered bg-white mb-0">
+          <thead>
+            <tr>
+              <th colspan="4" class="text-end">
+                <button
+                  class="btn btn-sm btn-success px-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#ConfigJudeteForm"
+                  @Click="addItemBtn"
+                >
+                  <i class="cil-plus"></i>
+                  <span>Add</span>
+                </button>
+              </th>
+            </tr>
+            <tr>
+              <th>#</th>
+              <th>County</th>
+              <th>Country</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(item, index) of dataSource" :key="item.IdJudet">
+              <td>{{ index + 1 }}</td>
+              <td>{{ item.NumeJudet }}</td>
+              <td>{{ item.NumeTara }}</td>
+              <td>
+                <a
+                  class="text-decoration-none text-warning m-2"
+                  @click.prevent="editItemBtn(item)"
+                  href="#"
+                  data-bs-toggle="modal"
+                  data-bs-target="#ConfigJudeteForm"
+                >
+                  <i class="cil-pencil"></i>
+                </a>
+                <a
+                  class="text-decoration-none text-danger m-2"
+                  @click.prevent="deleteItem(item, index)"
+                  href="#"
+                >
+                  <i class="cil-trash"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <config-judete-form
+      v-bind:propsData="editItemData"
+      :key="editItemData"
+      @editedItem="editedItem"
+    />
+  </template>
+</template>
+<script>
+import ConfigJudeteForm from "./ConfigJudeteForm.vue";
+
+export default {
+  name: "ConfigJudeteTable",
+  components: {
+    ConfigJudeteForm,
+  },
+  data: function(e) {
+    return {
+      isLoading: true,
+      newItem: "",
+      editItemData: {},
+      dataSource: [],
+    };
+  },
+  mounted() {
+    this.reload();
+  },
+  computed: {},
+  methods: {
+    loaded() {
+      this.isLoading = false;
+    },
+    reload() {
+      this.axios
+        .get("http://localhost:8080/ConfigJudete/get")
+        .then((response) => {
+          this.dataSource = response.data;
+          this.loaded();
+        })
+        .catch((error) => console.log(error));
+    },
+    addItemBtn() {
+      this.editItemData.isEditing = false;
+      this.editItemData.IdJudet = undefined;
+      this.editItemData.NumeJudet = undefined;
+      this.editItemData.TaraId = undefined;
+      this.editItemData.NumeTara = undefined;
+    },
+    editItemBtn(item) {
+      this.editItemData.isEditing = true;
+      this.editItemData.IdJudet = item.IdJudet;
+      this.editItemData.NumeJudet = item.NumeJudet;
+      this.editItemData.TaraId = item.TaraId;
+      this.editItemData.NumeTara = item.NumeTara;
+    },
+    formModalToggle() {
+      var formModal = window.bootstrap.Modal.getInstance(
+        document.getElementById("ConfigJudeteForm")
+      );
+      formModal.toggle();
+    },
+    editedItem(params) {
+      params.isEditing == true ? this.editItem(params) : this.addItem(params);
+    },
+    addItem(params) {
+      const data = new FormData();
+      data.append("values", JSON.stringify(params));
+      this.axios
+        .post("http://localhost:8080/ConfigJudete/Create", data)
+        .then((response) => {
+          if (response.data.status == 1 && response.data.count == 1) {
+            this.reload();
+            this.formModalToggle();
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    editItem(params) {
+      const data = new FormData();
+      data.set("id", params.IdJudet);
+      data.set("values", JSON.stringify(params));
+      this.axios
+        .put("http://localhost:8080/ConfigJudete/Edit", data)
+        .then((response) => {
+          if (response.data.status == 1 && response.data.count == 1) {
+            this.reload();
+            this.formModalToggle();
+          }
+        })
+        .catch((error) => console.log(error));
+    },
+    deleteItem(item, index) {
+      this.axios
+        .delete("http://localhost:8080/ConfigJudete/Delete/" + item.IdJudet)
+        .then((response) => {
+          if (response.data.status == 1 && response.data.count == 1)
+            this.dataSource.splice(index, 1);
+        })
+        .catch((error) => console.log(error));
+    },
+  },
+};
+</script>
