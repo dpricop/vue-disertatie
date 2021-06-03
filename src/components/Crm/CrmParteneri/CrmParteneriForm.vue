@@ -209,66 +209,6 @@
                 v-model="dataSource.CifraDeAfacere"
               />
             </div>
-
-            <!-- <div class="col-6 mb-3">
-              <label class="col-form-label">Cod:</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="dataSource.Cod"
-              />
-            </div> -->
-            <!-- <div class="col-6 mb-3">
-              <label class="col-form-label">Cod EAN:</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="dataSource.CodEan"
-              />
-            </div> -->
-
-            <!-- <div class="col-4 mb-3">
-              <label for="new-item" class="col-form-label">Pret lista:</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="dataSource.Pretlista"
-              />
-            </div>
-            <div class="col-4 mb-3">
-              <label for="new-item" class="col-form-label">Pret amanunt:</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="dataSource.Pretaman"
-              />
-            </div>
-            <div class="col-4 mb-3">
-              <label for="new-item" class="col-form-label">Adaos min:</label>
-              <input
-                type="text"
-                class="form-control"
-                v-model="dataSource.Adaosmin"
-              />
-            </div> -->
-            <!-- 
-            <div class="col-12">
-              <div class="form-check form-switch">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="reasonLeadField"
-                  :checked="dataSource.IsInactiva"
-                  @click="IsInactivaToggle"
-                />
-                <label
-                  class="form-check-label"
-                  for="reasonLeadField"
-                  @click.prevent="IsInactivaToggle"
-                  >Is inactive article</label
-                >
-              </div>
-            </div> -->
           </form>
         </div>
         <div class="modal-footer">
