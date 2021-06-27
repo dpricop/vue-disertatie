@@ -1,12 +1,10 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+import Partners from "./modules/Crm/Partners";
+import PartnerContacts from "./modules/Crm/PartnerContacts";
 
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
-  }
-})
+    partners: Partners,
+    partnercontacts: PartnerContacts,
+  },
+});
