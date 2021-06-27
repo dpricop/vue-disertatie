@@ -9,6 +9,8 @@
   "dependencies": {
     "@coreui/icons": "^2.0.1",
     "@popperjs/core": "^2.9.2",
+    "@vuelidate/core": "^2.0.0-alpha.19",
+    "@vuelidate/validators": "^2.0.0-alpha.17",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-alpha3",
     "core-js": "^3.10.2",
