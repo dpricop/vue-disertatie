@@ -37,9 +37,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item, index) of dataSource" :key="item.IdArticol">
+            <tr v-for="(item, index) of dataSource" :key="item.IdPartener">
               <td>{{ index + 1 }}</td>
-              <td>{{ item.NumePartener }}</td>
+              <td>
+                <router-link
+                  class="text-decoration-none"
+                  :to="{
+                    name: 'partner',
+                    params: { id: item.IdPartener },
+                  }"
+                >
+                  {{ item.NumePartener }}
+                </router-link>
+              </td>
               <td class="text-center">
                 <input
                   class="form-check-input"

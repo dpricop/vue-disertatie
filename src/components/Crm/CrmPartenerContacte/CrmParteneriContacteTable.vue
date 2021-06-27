@@ -87,6 +87,10 @@ export default {
   components: {
     CrmParteneriContacteForm,
   },
+  props: {
+    vuexGetter: String,
+    vuexParam: Number,
+  },
   data: function(e) {
     return {
       isLoading: true,
@@ -96,22 +100,35 @@ export default {
     };
   },
   mounted() {
-    this.reload();
+    this.reloadStore();
   },
   computed: {},
   methods: {
-    loaded() {
+    async reloadStore() {
+      await this.$store.dispatch("partnercontacts/getDataSource");
+      this.getData();
+    },
+    getData() {
+      if (this.vuexGetter == undefined) {
+        this.dataSource = this.$store.getters["partnercontacts/getAll"];
+      } else {
+        if (this.vuexParam == undefined) {
+          this.dataSource = this.$store.getters[
+            "partnercontacts/" + this.vuexGetter
+          ];
+        } else {
+          this.dataSource = this.$store.getters[
+            "partnercontacts/" + this.vuexGetter
+          ](this.vuexParam);
+        }
+      }
+      if (!Array.isArray(this.dataSource)) {
+        this.dataSource = [this.dataSource];
+      }
+
       this.isLoading = false;
     },
-    reload() {
-      this.axios
-        .get("http://localhost:8080/CrmPartenerContacte/get")
-        .then((response) => {
-          this.dataSource = response.data;
-          this.loaded();
-        })
-        .catch((error) => console.log(error));
-    },
+
     addItemBtn() {
       this.editItemData.isEditing = false;
       this.editItemData.IdPartenerContact = undefined;
@@ -152,7 +169,7 @@ export default {
         .post("http://localhost:8080/CrmPartenerContacte/Create", data)
         .then((response) => {
           if (response.data.status == 1 && response.data.count == 1) {
-            this.reload();
+            this.reloadStore();
             this.formModalToggle();
           }
         })
@@ -166,7 +183,7 @@ export default {
         .put("http://localhost:8080/CrmPartenerContacte/Edit", data)
         .then((response) => {
           if (response.data.status == 1 && response.data.count == 1) {
-            this.reload();
+            this.reloadStore();
             this.formModalToggle();
           }
         })
