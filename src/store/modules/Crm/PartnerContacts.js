@@ -40,7 +40,7 @@ export default {
     },
 
     getByPartenerId: (state) => (idParam) => {
-      return state.dataSource.find((item) => item.PartenerId == idParam);
+      return state.dataSource.filter((item) => item.PartenerId == idParam);
     },
   },
 };
