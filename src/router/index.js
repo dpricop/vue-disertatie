@@ -29,6 +29,11 @@ const routes = [
     ],
   },
   {
+    path: "/actions",
+    name: "actions",
+    component: () => import("../pages/Actions.vue"),
+  },
+  {
     path: "/partners",
     name: "partners",
     meta: { layout: "main" },
