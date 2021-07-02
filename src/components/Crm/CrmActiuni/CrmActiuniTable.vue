@@ -140,6 +140,7 @@ export default {
         .then((response) => {
           if (response.data.status == 1 && response.data.count == 1)
             action.EFinalizata = !action.EFinalizata;
+          this.getData();
         })
         .catch((error) => console.log(error));
     },
