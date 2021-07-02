@@ -46,5 +46,9 @@ export default {
     getByOpportunityId: (state) => (idParam) => {
       return state.dataSource.filter((item) => item.OpportunityId == idParam);
     },
+
+    getUnfinished: (state) => {
+      return state.dataSource.filter((item) => item.EFinalizata == false);
+    },
   },
 };
