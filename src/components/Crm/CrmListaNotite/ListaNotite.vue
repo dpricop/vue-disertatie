@@ -4,7 +4,7 @@
   </template>
   <template v-else>
     <div class="col-auto col-sm-10 col-md-8 col-xl-6 bg-white">
-      <div id="tasks_table">
+      <div id="tasks_table" class="bg-light">
         <div class="tasks_table_head">
           <div class="input-group">
             <input
@@ -31,14 +31,11 @@
             </button>
           </div>
         </div>
-        <div
-          class="text-danger bg-light p-1"
-          v-if="v$.newTask.$errors.length > 0"
-        >
+        <div class="text-danger p-1" v-if="v$.newTask.$errors.length > 0">
           {{ v$.newTask.$errors[0].$message }}
         </div>
 
-        <div class="tasks_table_body my-2">
+        <div class="tasks_table_body bg-white mt-2">
           <div
             class="d-flex justify-content-between align-items-center"
             v-for="(note, index) of dataSource"
