@@ -50,5 +50,12 @@ export default {
     getUnfinished: (state) => {
       return state.dataSource.filter((item) => item.EFinalizata == false);
     },
+    getUnfinishedCount: (state) => {
+      return state.dataSource.filter((item) => item.EFinalizata == false)
+        .length;
+    },
+    getFinishedCount: (state) => {
+      return state.dataSource.filter((item) => item.EFinalizata == true).length;
+    },
   },
 };

@@ -42,9 +42,15 @@ export default {
     getFinished: (state) => {
       return state.dataSource.filter((item) => item.EFinalizata == true);
     },
-
+    getFinishedCount: (state) => {
+      return state.dataSource.filter((item) => item.EFinalizata == true).length;
+    },
     getUnfinished: (state) => {
       return state.dataSource.filter((item) => item.EFinalizata == false);
+    },
+    getUnfinishedCount: (state) => {
+      return state.dataSource.filter((item) => item.EFinalizata == false)
+        .length;
     },
   },
 };
