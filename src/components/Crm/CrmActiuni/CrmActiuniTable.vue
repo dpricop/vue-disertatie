@@ -3,7 +3,7 @@
     <loading />
   </template>
   <template v-else>
-    <div class="col-12 bg-light py-3">
+    <div class="bg-light" :class="cssStyles">
       <table class="table table-bordered bg-white mb-0">
         <thead>
           <tr>
@@ -87,6 +87,7 @@ export default {
   props: {
     vuexGetter: String,
     vuexParam: Number,
+    cssStyles: String,
   },
   data: function(e) {
     return {

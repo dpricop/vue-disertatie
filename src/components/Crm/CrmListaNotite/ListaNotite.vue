@@ -3,7 +3,7 @@
     <loading />
   </template>
   <template v-else>
-    <div class="col-auto col-sm-10 col-md-8 col-xl-6 bg-white">
+    <div class="bg-white" :class="cssStyles">
       <div id="tasks_table" class="bg-light">
         <div class="tasks_table_head">
           <div class="input-group">
@@ -69,7 +69,7 @@
               <i class="cil-trash"></i>
             </a>
           </div>
-          <div class="d-flex justify-content-end mb-3">
+          <div class="d-flex bg-light justify-content-end">
             <a
               class="link mr-2 justify-content-end"
               href=""
@@ -99,6 +99,7 @@ export default {
   props: {
     vuexGetter: String,
     vuexParam: Number,
+    cssStyles: String,
   },
   data: function(e) {
     return {
