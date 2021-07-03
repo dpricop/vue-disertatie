@@ -12,7 +12,7 @@
             <th>Description</th>
             <th>Date Start</th>
             <th>Date Stop</th>
-            <th>Is finished</th>
+            <th>Finished</th>
             <th>Link</th>
             <th>Actions</th>
           </tr>
@@ -61,11 +61,11 @@
               >
                 <template v-if="item.EFinalizata">
                   <i class="cil-action-undo text-warning"></i>
-                  <span class="text-warning"> Unfinished</span>
+                  <span class="text-warning"> Unfinish</span>
                 </template>
                 <template v-else>
                   <i class="cil-check-alt"></i>
-                  Finished
+                  Finish
                 </template>
               </a>
             </td>
