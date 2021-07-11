@@ -12,7 +12,7 @@ import MainNavVertical from "./components/MainNavVertical";
 export default {
   name: "MainNav",
   props: ["toggle"],
-  data: function () {
+  data: function() {
     return {
       show: this.toggle,
     };
@@ -24,7 +24,7 @@ export default {
   methods: {
     toggleMainNavVertical() {
       this.show = !this.show;
-    }
+    },
   },
 };
 </script>

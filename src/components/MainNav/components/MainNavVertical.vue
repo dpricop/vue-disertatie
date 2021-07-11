@@ -1,9 +1,9 @@
 <template>
   <nav class="nav flex-column h-100 position-fixed border-0">
     <router-link
-      v-for="link in links"
-      :key="link.url"
-      :to="link.url"
+      v-for="(link, index) in links"
+      :key="index"
+      :to="{ name: link.name }"
       class="nav-link text-wrap"
       active-class="active"
       :title="link.title"
@@ -17,16 +17,18 @@
 export default {
   data: () => ({
     links: [
-      { title: "Home", url: "/" },
-      { title: "Dashboard", url: "dashboard" },
-      { title: "Tasks", url: "tasks" },
-      { title: "Opportunities", url: "opportunities" },
-      { title: "Leads", url: "leads" },
-      { title: "Reports", url: "reports" },
-      { title: "Partners", url: "partners" },
-      { title: "Contacts", url: "contacts" },
-      { title: "Email campaigns", url: "campaingas" },
-      { title: "Settings", url: "settings" },
+      { title: "Home", name: "home" },
+      { title: "Actions", name: "actions" },
+      { title: "Partners", name: "partners" },
+      { title: "Leads", name: "leads" },
+      { title: "Opportunities", name: "opportunities" },
+      { title: "Offers", name: "offers" },
+      // { title: "Tasks", url: "tasks" },
+      // { title: "Reports", url: "reports" },
+      // { title: "Contacts", url: "contacts" },
+      // { title: "Email campaigns", url: "campaingas" },
+      { title: "Dashboard", name: "dashboard" },
+      { title: "Settings", name: "settings" },
     ],
   }),
   methods: {},

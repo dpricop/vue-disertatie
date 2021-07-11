@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar navbar-expand-lg navbar-light bg-light border-bottom sticky-top p-0"
+    class="navbar navbar-expand-sm navbar-light bg-light border-bottom sticky-top p-0"
   >
     <div class="container-fluid px-0">
       <button
@@ -23,13 +23,15 @@
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
       </button>
       <div
         class="collapse navbar-collapse justify-content-end"
         id="navbarSupportedContent"
       >
-        <ul class="navbar-nav mb-2 mb-lg-0">
+        <ul class="navbar-nav mb-2 mb-sm-0">
           <li class="nav-item" v-for="link in links" :key="link.url">
             <router-link
               :to="link.url"
@@ -68,10 +70,12 @@ export default {
 };
 </script>
 <style scoped>
-.hamburger {
+.hamburger,
+.navbar-toggler {
   outline: none;
   display: inline-block;
   cursor: pointer;
+  box-shadow: none !important;
   transition-property: opacity, filter;
   transition-duration: 0.15s;
   transition-timing-function: linear;
@@ -81,17 +85,22 @@ export default {
   background-color: transparent;
   border: 0;
   margin: 0;
+  margin-top: 5px !important;
   overflow: visible;
 }
 .hamburger:hover {
   opacity: 0.7;
 }
-.hamburger.is-active:hover {
+.hamburger.is-active:hover,
+button[aria-expanded="true"] {
   opacity: 0.7;
 }
 .hamburger.is-active .hamburger-inner,
+button[aria-expanded="true"] .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
-.hamburger.is-active .hamburger-inner::after {
+button[aria-expanded="true"] .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after,
+button[aria-expanded="true"] .hamburger-inner::after {
   background-color: #000;
 }
 .hamburger-box {
@@ -128,11 +137,12 @@ export default {
 .hamburger-inner::after {
   bottom: -10px;
 }
-
+button[aria-expanded="false"] .hamburger-inner,
 .hamburger--spin .hamburger-inner {
   transition-duration: 0.22s;
   transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
+button[aria-expanded="false"] .hamburger-inner::before,
 .hamburger--spin .hamburger-inner::before {
   transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
 }
@@ -140,17 +150,20 @@ export default {
   transition: bottom 0.1s 0.25s ease-in,
     transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
-
+button[aria-expanded="true"] .hamburger-inner,
 .hamburger--spin.is-active .hamburger-inner {
   transform: rotate(225deg);
   transition-delay: 0.12s;
   transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+button[aria-expanded="true"] .hamburger-inner::before,
 .hamburger--spin.is-active .hamburger-inner::before {
   top: 0;
   opacity: 0;
   transition: top 0.1s ease-out, opacity 0.1s 0.12s ease-out;
 }
+
+button[aria-expanded="true"] .hamburger-inner::after,
 .hamburger--spin.is-active .hamburger-inner::after {
   bottom: 0;
   transform: rotate(-90deg);
