@@ -32,7 +32,7 @@ export default {
   },
   getters: {
     getAll: (state) => {
-      return state;
+      return state.dataSource;
     },
 
     getById: (state) => (idParam) => {
