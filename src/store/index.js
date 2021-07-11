@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import Partners from "./modules/Crm/Partners";
 import PartnerContacts from "./modules/Crm/PartnerContacts";
 import Actions from "./modules/Crm/Actions";
+import ActionsType from "./modules/Crm/ActionsType";
 import Tasks from "./modules/Crm/Tasks";
 import Leads from "./modules/Crm/Leads";
 import Opportunities from "./modules/Crm/Opportunities";
@@ -13,6 +14,7 @@ export default createStore({
     partnercontacts: PartnerContacts,
     partnercontacts: PartnerContacts,
     actions: Actions,
+    actionTypes: ActionsType,
     tasks: Tasks,
     leads: Leads,
     opportunities: Opportunities,
