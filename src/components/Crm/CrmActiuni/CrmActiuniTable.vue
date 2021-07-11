@@ -86,7 +86,7 @@ export default {
   },
   props: {
     vuexGetter: String,
-    vuexParam: Number,
+    vuexParam: String,
     cssStyles: String,
   },
   data: function(e) {
