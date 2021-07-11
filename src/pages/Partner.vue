@@ -11,7 +11,7 @@
         }"
       >
         <i class="cil-chevron-circle-left-alt"></i>
-        <span>All parteners</span>
+        <span>All partners</span>
       </router-link>
       <h1 class="my-4 px-4 d-inline-block">
         {{ this.partnerData.NumePartener }}

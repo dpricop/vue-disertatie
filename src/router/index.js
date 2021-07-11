@@ -38,28 +38,11 @@ const routes = [
     name: "partners",
     meta: { layout: "main" },
     component: () => import("../pages/Partners.vue"),
-    children: [
-      {
-        path: ":id(\\d+)",
-        name: "partner",
-        component: () => import("../pages/Partner.vue"),
-      },
-    ],
   },
   {
     path: "/partner/:id(\\d+)",
     name: "partner",
     component: () => import("../pages/Partner.vue"),
-  },
-  {
-    path: "/campaingas",
-    name: "Campaingas",
-    component: () => import("../pages/EmailCampaigns.vue"),
-  },
-  {
-    path: "/contacts",
-    name: "Contacts",
-    component: () => import("../pages/Contacts.vue"),
   },
   {
     path: "/dashboard",
@@ -72,20 +55,30 @@ const routes = [
     component: () => import("../pages/Leads.vue"),
   },
   {
+    path: "/lead/:id(\\d+)",
+    name: "lead",
+    component: () => import("../pages/Lead.vue"),
+  },
+  {
     path: "/opportunities",
     name: "opportunities",
     component: () => import("../pages/Opportunities.vue"),
   },
   {
+    path: "/opportunity/:id(\\d+)",
+    name: "opportunity",
+    component: () => import("../pages/Opportunity.vue"),
+  },
+  {
     path: "/offers",
     name: "offers",
-    component: () => import("../pages/Opportunities.vue"),
+    component: () => import("../pages/Offers.vue"),
   },
-  // {
-  //   path: "/reports",
-  //   name: "Reports",
-  //   component: () => import("../pages/Reports.vue"),
-  // },
+  {
+    path: "/offer/:id(\\d+)",
+    name: "offer",
+    component: () => import("../pages/Offer.vue"),
+  },
   {
     path: "/settings",
     name: "settings",
@@ -94,7 +87,7 @@ const routes = [
   {
     path: "/tasks",
     name: "Tasks",
-    component: () => import("../pages/Tasks.vue"),
+    component: () => import("../pages/TodeleteValidateTestPage.vue"),
   },
   {
     path: "/login",
