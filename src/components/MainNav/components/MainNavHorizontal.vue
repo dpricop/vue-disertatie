@@ -55,7 +55,7 @@ export default {
     return {
       links: [
         { title: "Home", url: "/", exact: true },
-        { title: "About", url: "about", exact: true },
+        { title: "About", url: "/about", exact: true },
       ],
       show: this.toggle,
     };
