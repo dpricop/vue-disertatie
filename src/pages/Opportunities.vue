@@ -17,7 +17,7 @@ import Loading from "@/components/Loading";
 import CrmOpportunitiesTable from "../components/Crm/CrmOpportunities/CrmOpportunitiesTable.vue";
 
 export default {
-  name: "CrmParteneriTable",
+  name: "CrmOpportunities",
   components: {
     Loading,
     CrmOpportunitiesTable,
