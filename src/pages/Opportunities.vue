@@ -1,9 +1,26 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 bg-light p-5">
-        <h1>Opportunities</h1>
+  <template v-if="isLoading == true">
+    <loading />
+  </template>
+  <template v-else>
+    <div class="col-12 p-3"><h1>Opportunities</h1></div>
+
+    <div class="col-12 py-3 bg-light">
+      <div class="table-responsive">
+        <crm-opportunities-table />
       </div>
     </div>
-  </div>
+  </template>
 </template>
+<script>
+import Loading from "@/components/Loading";
+import CrmOpportunitiesTable from "../components/Crm/CrmOpportunities/CrmOpportunitiesTable.vue";
+
+export default {
+  name: "CrmParteneriTable",
+  components: {
+    Loading,
+    CrmOpportunitiesTable,
+  },
+};
+</script>
