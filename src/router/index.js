@@ -13,16 +13,8 @@ const routes = [
     component: () => import("../pages/About.vue"),
 
     children: [
-      // { path: "", redirect: { name: "About" } },
-      // {
-      //   path: '/:pathMatch(.*)*',
-      //   name: "AboutView",
-      //   // redirect: { name: "About" },
-      //   component: () => import("../pages/About.vue"),
-      // },
       {
         path: ":universitatea/:facultatea",
-        // path: ":id/:universitatea/:facultatea",
         name: "AboutView",
         component: () => import("../pages/About.vue"),
       },
