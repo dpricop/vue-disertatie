@@ -24,7 +24,7 @@
             <th>Date Start</th>
             <th>Date Stop</th>
             <th>Finished</th>
-            <th>Link</th>
+            <th v-if="isLead == false && isOpportunity == false">Link</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -42,7 +42,7 @@
               ></i>
               <i v-else class="cil-x-circle text-danger"></i>
             </td>
-            <td>
+            <td v-if="isLead == false && isOpportunity == false">
               <router-link
                 v-if="item.LeadId != null"
                 class="text-decoration-none"
