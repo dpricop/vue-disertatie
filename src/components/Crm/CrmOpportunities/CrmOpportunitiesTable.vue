@@ -36,7 +36,18 @@
       <tbody>
         <tr v-for="(item, index) of dataSource" :key="item.IdOpportunity">
           <td>{{ index + 1 }}</td>
-          <td>{{ item.OppDescriere }}</td>
+          <td>
+            <router-link
+              class="text-decoration-none"
+              :to="{
+                name: 'opportunity',
+                params: { id: item.IdOpportunity },
+              }"
+              target="_blank"
+            >
+              {{ item.OppDescriere }}
+            </router-link>
+          </td>
           <td class="text-center">
             <input
               class="form-check-input"
