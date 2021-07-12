@@ -221,8 +221,7 @@ export default {
           labels: ["Converted", "Unconverted"],
           datasets: [
             {
-              // data: [this.leadsInfo.converted, this.leadsInfo.unconverted],
-              data: [8, 6],
+              data: [this.leadsInfo.converted, this.leadsInfo.unconverted],
               backgroundColor: ["rgb(71, 186, 193)", "rgb(174, 105, 175)"],
               borderWidth: 1,
             },
@@ -249,8 +248,7 @@ export default {
           labels: ["Hot", "Not hot"],
           datasets: [
             {
-              //data: [this.opportunities.hot, this.opportunities.nothot],
-              data: [10, 5],
+              data: [this.opportunities.hot, this.opportunities.nothot],
               backgroundColor: ["rgb(71, 186, 193)", "rgb(174, 105, 175)"],
               borderWidth: 1,
             },
@@ -272,18 +270,13 @@ export default {
       var chartObj = {
         type: "doughnut",
         data: {
-          // labels: [
-          //   "In progress " + "(" + 5 + ")",
-          //   "Accepted " + "(" + 5 + ")",
-          //   "Denied " + "(" + 10 + ")",
-          // ],
           labels: ["In progress ", "Accepted ", "Denied "],
           datasets: [
             {
               data: [
-                5, //this.offers.inprogress,
-                5, //this.offers.accepted,
-                10, //this.offers.denied,
+                this.offers.inprogress,
+                this.offers.accepted,
+                this.offers.denied,
               ],
               backgroundColor: [
                 "rgb(21, 164, 250)",
