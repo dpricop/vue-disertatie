@@ -10,7 +10,7 @@
             <button
               class="btn btn-sm btn-success px-3"
               data-bs-toggle="modal"
-              data-bs-target="#CrmParteneriForm"
+              data-bs-target="#CrmOpportunitiesForm"
               @Click="addItemBtn"
             >
               <i class="cil-plus"></i>
@@ -89,7 +89,7 @@
               @click.prevent="editItemBtn(item)"
               href="#"
               data-bs-toggle="modal"
-              data-bs-target="#CrmParteneriForm"
+              data-bs-target="#CrmOpportunitiesForm"
             >
               <i class="cil-pencil"></i>
             </a>
@@ -104,22 +104,21 @@
         </tr>
       </tbody>
     </table>
-
-    <!-- <crm-parteneri-form
+    <crm-opportunities-form
       v-bind:propsData="editItemData"
       :key="editItemData"
       @editedItem="editedItem"
-    /> -->
+    />
   </template>
 </template>
 <script>
 import Loading from "@/components/Loading";
-// import CrmParteneriForm from "./CrmParteneriForm";
+import CrmOpportunitiesForm from "./CrmOpportunitiesForm.vue";
 
 export default {
   name: "CrmOpportunitiesTable",
   components: {
-    // CrmParteneriForm,
+    CrmOpportunitiesForm,
     Loading,
   },
   data: function(e) {
@@ -161,15 +160,46 @@ export default {
 
     addItemBtn() {
       this.editItemData.isEditing = false;
+      this.editItemData.IdOpportunity = undefined;
+      this.editItemData.OppDescriere = undefined;
+      this.editItemData.Competitori = undefined;
+      this.editItemData.FazaId = undefined;
+      this.editItemData.HotOrNot = undefined;
+      this.editItemData.MotivId = undefined;
+      this.editItemData.PartenerContactId = undefined;
+      this.editItemData.PartenerId = undefined;
+      this.editItemData.Probabilitatea = undefined;
+      this.editItemData.StatusId = undefined;
+      this.editItemData.Suma = undefined;
+      this.editItemData.InDate = undefined;
+      this.editItemData.InUserId = undefined;
+      this.editItemData.ModDate = undefined;
+      this.editItemData.ModUserId = undefined;
     },
     editItemBtn(item) {
+      console.log(item);
       this.editItemData.isEditing = true;
+      this.editItemData.IdOpportunity = item.IdOpportunity;
+      this.editItemData.OppDescriere = item.OppDescriere;
+      this.editItemData.Competitori = item.Competitori;
+      this.editItemData.FazaId = item.FazaId;
+      this.editItemData.HotOrNot = item.HotOrNot;
+      this.editItemData.MotivId = item.MotivId;
+      this.editItemData.PartenerContactId = item.PartenerContactId;
+      this.editItemData.PartenerId = item.PartenerId;
+      this.editItemData.Probabilitatea = item.Probabilitatea;
+      this.editItemData.StatusId = item.StatusId;
+      this.editItemData.Suma = item.Suma;
+      this.editItemData.InDate = item.InDate;
+      this.editItemData.InUserId = item.InUserId;
+      this.editItemData.ModDate = item.ModDate;
+      this.editItemData.ModUserId = item.ModUserId;
     },
     formModalToggle() {
-      // var formModal = window.bootstrap.Modal.getInstance(
-      //   document.getElementById("CrmParteneriForm")
-      // );
-      // formModal.toggle();
+      var formModal = window.bootstrap.Modal.getInstance(
+        document.getElementById("CrmOpportunitiesForm")
+      );
+      formModal.toggle();
 
       return true;
     },
