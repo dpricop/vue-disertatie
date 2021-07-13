@@ -18,7 +18,7 @@ export default {
     async getDataSource(context) {
       context.commit("SET_LOADING", true);
       await axios
-        .get("http://localhost:8080/ConfigMotive/get")
+        .get("http://localhost:8080/CrmOpportunityStatus/get")
         .then((response) => {
           context.commit("SET_DATASOURCE", response.data);
         })
@@ -36,15 +36,9 @@ export default {
     },
 
     getById: (state) => (idParam) => {
-      return state.dataSource.find((item) => item.IdMotiv == idParam);
-    },
-
-    getForLeads: (state) => {
-      return state.dataSource.filter((item) => item.EMotivLead == true);
-    },
-
-    getOpportunities: (state) => {
-      return state.dataSource.filter((item) => item.EMotivOpportunity == true);
+      return state.dataSource.find(
+        (item) => item.IdOpportunityStatus == idParam
+      );
     },
   },
 };

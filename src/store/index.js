@@ -6,6 +6,8 @@ import ActionsType from "./modules/Crm/ActionsType";
 import Tasks from "./modules/Crm/Tasks";
 import Leads from "./modules/Crm/Leads";
 import Opportunities from "./modules/Crm/Opportunities";
+import OpportunityPhase from "./modules/Crm/OpportunityPhase";
+import OpportunityStatus from "./modules/Crm/OpportunityStatus";
 import OffersHeaders from "./modules/Crm/OffersHeaders";
 import Reasons from "./modules/Config/Reasons";
 import CrmLeadStatus from "./modules/Crm/CrmLeadStatus";
@@ -14,13 +16,14 @@ export default createStore({
   modules: {
     partners: Partners,
     partnercontacts: PartnerContacts,
-    partnercontacts: PartnerContacts,
     actions: Actions,
     actionTypes: ActionsType,
     tasks: Tasks,
     leads: Leads,
     leadStatus: CrmLeadStatus,
     opportunities: Opportunities,
+    opportunityPhase: OpportunityPhase,
+    opportunityStatus: OpportunityStatus,
     offers: OffersHeaders,
     reason: Reasons,
   },
