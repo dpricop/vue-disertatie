@@ -12,6 +12,7 @@
                 class="btn btn-sm btn-success px-3"
                 data-bs-toggle="modal"
                 data-bs-target="#CrmActiuneForm"
+                @click="addItemBtn"
               >
                 <i class="cil-plus"></i><span>Add action</span>
               </button>
@@ -71,7 +72,6 @@
                 href="#"
                 data-bs-toggle="modal"
                 data-bs-target="#CrmActiuneForm"
-                @Click="addItemBtn"
               >
                 <i class="cil-pencil"></i>
               </a>
@@ -98,8 +98,8 @@
     <crm-actiuni-form
       v-bind:propsData="editItemData"
       :key="editItemData"
-      :is-lead="true"
-      :is-opportunity="false"
+      :is-lead="this.isLead"
+      :is-opportunity="this.isOpportunity"
       @editedItem="editedItem"
     />
   </template>
@@ -207,7 +207,7 @@ export default {
       this.editItemData.Descriere = item.Descriere;
       this.editItemData.DataInceput = item.DataInceput;
       this.editItemData.DataSfarsit = item.DataSfarsit;
-      this.editItemData.EFinalizata = false;
+      this.editItemData.EFinalizata = item.EFinalizata;
       this.editItemData.TipActiuneId = item.TipActiuneId;
       this.editItemData.LeadId = item.LeadId;
       this.editItemData.OpportunityId = item.OpportunityId;

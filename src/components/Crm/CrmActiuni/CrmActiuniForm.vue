@@ -16,17 +16,10 @@
                 ? "Create"
                 : "Edit"
             }}
-            {{
-              "isLead" in dataSource && dataSource.isLead == "true"
-                ? "lead"
-                : ""
-            }}
-            {{
-              "isOpportunity" in dataSource &&
-              dataSource.isOpportunity == "true"
-                ? "opportunity"
-                : ""
-            }}
+            <span v-if="isLead == true && isOpportunity == false"> lead </span>
+            <span v-if="isOpportunity == true && isLead == false">
+              opportunity
+            </span>
             action
           </h5>
           <button
@@ -195,6 +188,8 @@ export default {
     propsData: {
       isEditing: Boolean,
     },
+    isLead: Boolean,
+    isOpportunity: Boolean,
   },
   data: function(e) {
     return {
