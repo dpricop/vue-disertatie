@@ -81,7 +81,6 @@
                 name: 'offer',
                 params: { id: item.IdOfertaAntent },
               }"
-              target="_blank"
             >
               <i class="cil-chevron-circle-right-alt"></i>
             </router-link>
