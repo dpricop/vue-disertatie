@@ -10,7 +10,12 @@
       <h3 class="py-3">Actions</h3>
 
       <div class="table-responsive">
-        <crm-actiuni-table vuex-getter="getUnfinished" css-styles="col-auto" />
+        <crm-actiuni-table
+          vuex-getter="getUnfinished"
+          :is-lead="true"
+          :is-opportunity="true"
+          css-styles="col-auto"
+        />
       </div>
     </div>
   </div>
