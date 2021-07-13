@@ -194,16 +194,7 @@ export default {
   props: {
     propsData: {
       isEditing: Boolean,
-      Descriere: String,
-      DataInceput: String,
-      DataSfarsit: String,
-      EFinalizata: Boolean,
-      TipActiuneId: Number,
-      LeadId: Number,
-      OpportunityId: Number,
     },
-    isLead: Boolean,
-    isOpportunity: Boolean,
   },
   data: function(e) {
     return {
