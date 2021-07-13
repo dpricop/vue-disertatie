@@ -9,6 +9,7 @@ import Opportunities from "./modules/Crm/Opportunities";
 import OpportunityPhase from "./modules/Crm/OpportunityPhase";
 import OpportunityStatus from "./modules/Crm/OpportunityStatus";
 import OffersHeaders from "./modules/Crm/OffersHeaders";
+import OffersDetails from "./modules/Crm/OffersDetails";
 import Reasons from "./modules/Config/Reasons";
 import CrmLeadStatus from "./modules/Crm/CrmLeadStatus";
 
@@ -25,6 +26,7 @@ export default createStore({
     opportunityPhase: OpportunityPhase,
     opportunityStatus: OpportunityStatus,
     offers: OffersHeaders,
+    offersDetails: OffersDetails,
     reason: Reasons,
   },
 });
