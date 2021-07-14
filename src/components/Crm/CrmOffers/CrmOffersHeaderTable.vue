@@ -193,6 +193,11 @@ export default {
           if (response.data.status == 1 && response.data.count == 1) {
             this.reloadStore();
             this.formModalToggle();
+
+            this.$router.push({
+              name: "offer",
+              params: { id: response.data.model.IdOfertaAntent },
+            });
           }
         })
         .catch((error) => console.log(error));
