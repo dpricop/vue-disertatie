@@ -36,7 +36,7 @@ export default {
     },
 
     getByAntetId: (state) => (idParam) => {
-      return state.dataSource.find((item) => item.OfertaAntentId == idParam);
+      return state.dataSource.filter((item) => item.OfertaAntentId == idParam);
     },
   },
 };
