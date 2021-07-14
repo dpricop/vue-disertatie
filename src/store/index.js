@@ -12,6 +12,7 @@ import OffersHeaders from "./modules/Crm/OffersHeaders";
 import OffersDetails from "./modules/Crm/OffersDetails";
 import Reasons from "./modules/Config/Reasons";
 import CrmLeadStatus from "./modules/Crm/CrmLeadStatus";
+import Articles from "./modules/Crm/Articles";
 
 export default createStore({
   modules: {
@@ -28,5 +29,6 @@ export default createStore({
     offers: OffersHeaders,
     offersDetails: OffersDetails,
     reason: Reasons,
+    articles: Articles,
   },
 });
