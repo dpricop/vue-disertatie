@@ -10,7 +10,7 @@
             <button
               class="btn btn-sm btn-success px-3"
               data-bs-toggle="modal"
-              data-bs-target="#CrmParteneriForm"
+              data-bs-target="#CrmOffersDetailsArticles"
               @Click="addItemBtn"
             >
               <i class="cil-plus"></i>
@@ -51,7 +51,7 @@
               @click.prevent="editItemBtn(item)"
               href="#"
               data-bs-toggle="modal"
-              data-bs-target="#CrmParteneriForm"
+              data-bs-target="#CrmOffersDetailsArticles"
             >
               <i class="cil-pencil"></i>
             </a>
@@ -65,17 +65,24 @@
           </td>
         </tr>
       </tbody>
+      <caption class="text-end" v-if="sumOfOffer > 0">
+        Total ammount without VAT
+        {{
+          sumOfOffer
+        }}
+      </caption>
     </table>
 
-    <!-- <crm-parteneri-form
+    <crm-offers-details-articles
       v-bind:propsData="editItemData"
       :key="editItemData"
       @editedItem="editedItem"
-    /> -->
+    />
   </template>
 </template>
 <script>
 import Loading from "@/components/Loading";
+import CrmOffersDetailsArticles from "./CrmOffersDetailsArticles.vue";
 // import CrmParteneriForm from "./CrmParteneriForm";
 
 export default {
@@ -83,11 +90,17 @@ export default {
   components: {
     // CrmParteneriForm,
     Loading,
+    CrmOffersDetailsArticles,
+  },
+  props: {
+    vuexGetter: String,
+    vuexParam: String,
   },
   data: function(e) {
     return {
       isLoading: true,
       newItem: "",
+      sumOfOffer: 0,
       editItemData: {},
       dataSource: [],
     };
@@ -119,48 +132,79 @@ export default {
         this.dataSource = [this.dataSource];
       }
       this.isLoading = false;
+      this.calcSumOfOffer();
     },
 
     addItemBtn() {
       this.editItemData.isEditing = false;
+      this.editItemData.OfertaAntentId = this.vuexParam;
+      this.editItemData.Um = undefined;
+      this.editItemData.Moneda = undefined;
+      this.editItemData.Cod = undefined;
+      this.editItemData.CodEan = undefined;
+      this.editItemData.Grupa = undefined;
+      this.editItemData.Cantitate = undefined;
+      this.editItemData.PretUnitar = undefined;
+      this.editItemData.PretTotalNet = undefined;
     },
+
     editItemBtn(item) {
       this.editItemData.isEditing = true;
+      this.editItemData.ArticolId = item.ArticolId;
+      this.editItemData.OfertaAntentId = item.OfertaAntentId;
+      this.editItemData.IdOfertaDetalii = item.IdOfertaDetalii;
+      this.editItemData.Um = item.Articole.Um.Um;
+      this.editItemData.Moneda = item.Articole.Moneda.Moneda;
+      this.editItemData.Cod = item.Articole.Cod;
+      this.editItemData.CodEan = item.Articole.CodEan;
+      this.editItemData.Grupa = item.Articole.Grupa.Grupa;
+      this.editItemData.Cantitate = item.Cantitate;
+      this.editItemData.PretUnitar = item.PretUnitar;
+      this.editItemData.PretTotalNet = item.PretTotalNet;
     },
     formModalToggle() {
-      // var formModal = window.bootstrap.Modal.getInstance(
-      //   document.getElementById("CrmParteneriForm")
-      // );
-      // formModal.toggle();
-
-      return true;
+      var formModal = window.bootstrap.Modal.getInstance(
+        document.getElementById("CrmOffersDetailsArticles")
+      );
+      formModal.toggle();
     },
+
+    calcSumOfOffer() {
+      this.sumOfOffer = this.dataSource
+        .map((el) => el.PretTotalNet)
+        .reduce((prev, next) => prev + next);
+    },
+
     editedItem(params) {
       params.isEditing == true ? this.editItem(params) : this.addItem(params);
     },
+
     addItem(params) {
       const data = new FormData();
       data.append("values", JSON.stringify(params));
       this.axios
-        .post("http://localhost:8080/CrmOferteAntent/Create", data)
+        .post("http://localhost:8080/CrmOferteDetalii/Create", data)
         .then((response) => {
           if (response.data.status == 1 && response.data.count == 1) {
             this.reloadStore();
             this.formModalToggle();
+            this.calcSumOfOffer();
           }
         })
         .catch((error) => console.log(error));
     },
+
     editItem(params) {
       const data = new FormData();
-      data.set("id", params.IdOfertaAntent);
+      data.set("id", params.IdOfertaDetalii);
       data.set("values", JSON.stringify(params));
       this.axios
-        .put("http://localhost:8080/CrmOferteAntent/Edit", data)
+        .put("http://localhost:8080/CrmOferteDetalii/Edit", data)
         .then((response) => {
           if (response.data.status == 1 && response.data.count == 1) {
             this.reloadStore();
             this.formModalToggle();
+            this.calcSumOfOffer();
           }
         })
         .catch((error) => console.log(error));
@@ -168,11 +212,15 @@ export default {
     deleteItem(item, index) {
       this.axios
         .delete(
-          "http://localhost:8080/CrmOferteAntent/Delete/" + item.IdOfertaAntent
+          "http://localhost:8080/CrmOferteDetalii/DeleteArticle?IdOfertaDetalii=" +
+            item.IdOfertaDetalii +
+            "&articolId=" +
+            item.ArticolId
         )
         .then((response) => {
           if (response.data.status == 1 && response.data.count == 1)
-            this.dataSource.splice(index, 1);
+            this.reloadStore();
+          this.calcSumOfOffer();
         })
         .catch((error) => console.log(error));
     },
