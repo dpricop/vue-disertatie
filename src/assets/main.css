@@ -41,3 +41,13 @@
 .table-toolbar-btn-add:hover i {
   color: #198754;
 }
+.spinner-default {
+  color: #47bac1 !important;
+}
+.table-fit {
+  width: 1px;
+}
+
+textarea {
+  resize: none;
+}
