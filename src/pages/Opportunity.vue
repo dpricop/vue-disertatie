@@ -22,6 +22,7 @@
     />
   </div>
   <div class="col-12 py-3 mt-3 bg-light">
+    <h4>Actions</h4>
     <div class="table-responsive">
       <crm-actiuni-table
         vuex-getter="getByOpportunityId"

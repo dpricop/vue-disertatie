@@ -18,14 +18,14 @@
       </h1>
     </div>
 
-    <div class="col-12 pt-3 bg-light">
+    <div class="col-12 py-3 bg-light">
       <crm-parteneri-form-accordion
         v-bind:propsData="this.partnerData"
         :key="this.partnerData"
         @editedItem="this.partnerData"
       />
     </div>
-
+    <h3 class="bg-white py-3">Contacts</h3>
     <div class="col-12 bg-light">
       <crm-partener-contacte-table
         vuexGetter="getByPartenerId"
