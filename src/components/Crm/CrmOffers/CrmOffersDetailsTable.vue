@@ -170,6 +170,8 @@ export default {
     },
 
     calcSumOfOffer() {
+      if (this.dataSource.length == 0) return (this.sumOfOffer = 0);
+
       this.sumOfOffer = this.dataSource
         .map((el) => el.PretTotalNet)
         .reduce((prev, next) => prev + next);
