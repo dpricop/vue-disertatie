@@ -140,14 +140,10 @@ export default {
       localStorage.setItem("user", JSON.stringify(this.user));
       this.isLoading = false;
 
-      console.log(this.user);
-
       if (this.user.count == 1) {
         this.$router.push({
           name: "home",
         });
-      } else {
-        console.log("validation faile");
       }
     },
     onClickForgotPassword() {

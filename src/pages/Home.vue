@@ -1,6 +1,6 @@
 <template>
   <h1 class="my-3">Home</h1>
-  <div class="row mx-0 bg-light">
+  <div class="row mx-0 bg-light pb-4">
     <div class="col-12 col-md-4 col-xl-3">
       <h3 class="py-3">Tasks</h3>
       <lista-notite css-styles="col-auto" />
