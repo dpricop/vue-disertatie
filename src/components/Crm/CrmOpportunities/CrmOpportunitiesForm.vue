@@ -45,6 +45,7 @@
                   class="form-control"
                   id="PartnerDropDown"
                   v-model="dataSource.PartenerId"
+                  @change="setPartenerContactDS"
                 >
                   <option
                     v-for="item of PartnerDropDown.dataSource"
@@ -311,6 +312,14 @@ export default {
   methods: {
     HotOrNotToggle() {
       this.dataSource.HotOrNot = !this.dataSource.HotOrNot;
+    },
+
+    setPartenerContactDS() {
+      this.PartnerContactDropDown.isLoading = true;
+      this.PartnerContactDropDown.dataSource = this.$store.getters[
+        "partnercontacts/getByPartenerId"
+      ](this.dataSource.PartenerId);
+      this.PartnerContactDropDown.isLoading = false;
     },
 
     async loadPartnerDropDown() {

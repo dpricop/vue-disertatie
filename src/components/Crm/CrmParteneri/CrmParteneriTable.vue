@@ -64,13 +64,15 @@
               <td>{{ item.NumeJudet }}</td>
               <td>{{ item.NumeTara }}</td>
               <td>
-                <a
+                <router-link
                   class="text-decoration-none text-success m-2"
-                  href="#"
-                  @click.prevent=""
+                  :to="{
+                    name: 'partner',
+                    params: { id: item.IdPartener },
+                  }"
                 >
                   <i class="cil-chevron-circle-right-alt"></i>
-                </a>
+                </router-link>
                 <a
                   class="text-decoration-none text-warning m-2"
                   @click.prevent="editItemBtn(item)"

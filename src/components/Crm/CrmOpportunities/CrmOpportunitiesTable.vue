@@ -177,7 +177,6 @@ export default {
       this.editItemData.ModUserId = undefined;
     },
     editItemBtn(item) {
-      console.log(item);
       this.editItemData.isEditing = true;
       this.editItemData.IdOpportunity = item.IdOpportunity;
       this.editItemData.OppDescriere = item.OppDescriere;
