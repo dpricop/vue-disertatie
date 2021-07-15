@@ -13,6 +13,7 @@ import OffersDetails from "./modules/Crm/OffersDetails";
 import Reasons from "./modules/Config/Reasons";
 import CrmLeadStatus from "./modules/Crm/CrmLeadStatus";
 import Articles from "./modules/Crm/Articles";
+import Users from "./modules/Users";
 
 export default createStore({
   modules: {
@@ -30,5 +31,6 @@ export default createStore({
     offersDetails: OffersDetails,
     reason: Reasons,
     articles: Articles,
+    users: Users,
   },
 });
